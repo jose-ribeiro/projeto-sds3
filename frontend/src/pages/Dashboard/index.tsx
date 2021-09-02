@@ -4,7 +4,7 @@ import DonutChart from "components/DonutChart";
 import Navbar from "components/Navbar";
 import Footer from "components/Footer";
 
-function Dashboard() {
+const Dashboard = () =>  {
     return (
         <>
             <Navbar />
@@ -28,7 +28,7 @@ function Dashboard() {
 
                 <DataTable />
             </div>
-            <Footer />
+            
         </>
     );
 }
