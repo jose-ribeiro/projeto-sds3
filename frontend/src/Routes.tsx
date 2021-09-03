@@ -1,22 +1,20 @@
-import Dashboard from "pages/Dashboard";
-import Home from "pages/Home";
-import { BrowserRouter, Route } from "react-router-dom";
+import Dashboard from 'pages/Dashboard';
+import Home from 'pages/Home';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-function Routes() {
+const Routes = () => {
     return (
         <BrowserRouter>
-            <switch>
+            <Switch>
                 <Route path="/" exact>
                     <Home />
                 </Route>
                 <Route path="/dashboard">
                     <Dashboard />
-                </Route> 
-            </switch>
-        
+                </Route>
+            </Switch>
         </BrowserRouter>
-
     );
-  }
-  
-  export default Routes;
+}
+
+export default Routes;

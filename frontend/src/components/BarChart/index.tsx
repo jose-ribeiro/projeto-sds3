@@ -6,17 +6,18 @@ import { round } from 'utils/format';
 import { BASE_URL } from 'utils/requests';
 
 type SeriesData = {
-    name: String;
+    name: string;
     data: number[];
 }
+
 type ChartData = {
-    labels:{
-        categories: String[];
+    labels: {
+        categories: string[];
     };
-    series:SeriesData[];
+    series: SeriesData[];
 }
 
-function BarChart() {
+const BarChart = () => {
 
     const [chartData, setChartData] = useState<ChartData>({
         labels: {
@@ -35,7 +36,7 @@ function BarChart() {
             .then(response => {
                 const data = response.data as SaleSuccess[];
                 const myLabels = data.map(x => x.sellerName);
-                const mySeries = data.map(x => round (100.0 * x.deals / x.visited, 1));
+                const mySeries = data.map(x => round(100.0 * x.deals / x.visited, 1));
 
                 setChartData({
                     labels: {
@@ -44,7 +45,7 @@ function BarChart() {
                     series: [
                         {
                             name: "% Success",
-                            data: mySeries                  
+                            data: mySeries                   
                         }
                     ]
                 });
@@ -58,15 +59,14 @@ function BarChart() {
             }
         },
     };
-    
 
     return (
-        <Chart 
-            options ={{...options, xaxis: chartData.labels}}
+       <Chart  
+            options={{ ...options, xaxis: chartData.labels}}
             series={chartData.series}
             type="bar"
             height="240"
-        />       
+       />
     );
 }
 
